@@ -28,4 +28,9 @@ public class TimeText : MonoBehaviour {
         minutos = (int)Mathf.Floor(tiempo / 60);
         segundos = (int)Mathf.Floor(tiempo % 60);
     }
+
+    public void ResetTime()
+    {
+        tiempo = 0;
+    }
 }

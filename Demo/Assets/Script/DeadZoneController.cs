@@ -3,6 +3,7 @@ using System.Collections;
 
 public class DeadZoneController : MonoBehaviour {
     private Transform playerPosition;
+    public GameObject timeController;
 	// Use this for initialization
 	void Start () {
         playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
@@ -14,7 +15,9 @@ public class DeadZoneController : MonoBehaviour {
 	}
 
     void OnTriggerEnter(Collider other)
-    {no
+    {
         playerPosition.position = new Vector3(0,0,0);
+        timeController.GetComponent<TimeText>().ResetTime();
     }
+
 }
