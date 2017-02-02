@@ -10,7 +10,7 @@ public class Fading : MonoBehaviour {
     private int fadeDir = -1;
 
 
-    /*void OnGUI()
+    void OnGUI()
     {
         // fade out/in alpha value using a direction, a speed and Time.deltaTime to convert the operation to seconds
         alpha += fadeDir * fadeSpeed * Time.deltaTime;
@@ -32,6 +32,6 @@ public class Fading : MonoBehaviour {
     void OnLevelWasLoaded()
     {
         //alpha = 1;
-        //BeginFade(-1);
-    }*/
+        BeginFade(-1);
+    }
 }

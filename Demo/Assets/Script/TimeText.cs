@@ -8,8 +8,11 @@ public class TimeText : MonoBehaviour {
     private float tiempo;
     private int minutos;
     private int segundos;
+    private bool stop;
+    
 	// Use this for initialization
 	void Start () {
+        stop = false;
         textDisplay = GetComponent<Text>();
         segundos = 0;
         minutos = 0;
@@ -18,7 +21,10 @@ public class TimeText : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        CalculateTime();
+        if (!stop)
+        {
+            CalculateTime();
+        }            
         textDisplay.text = "Time: " + minutos.ToString("00") + ":" + segundos.ToString("00") ;
 	}
 
@@ -32,5 +38,10 @@ public class TimeText : MonoBehaviour {
     public void ResetTime()
     {
         tiempo = 0;
+    }
+
+    public void Stop()
+    {
+        stop = true;
     }
 }

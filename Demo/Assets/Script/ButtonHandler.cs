@@ -28,12 +28,12 @@ public class ButtonHandler : MonoBehaviour {
         pausePanel.SetActive(false);
     }
 
-    private void Pause()
+    public void Pause()
     {
         Time.timeScale = 0;
     }
 
-    private void UnPause()
+    public void UnPause()
     {
         Time.timeScale = 1;
     }
@@ -45,14 +45,29 @@ public class ButtonHandler : MonoBehaviour {
 
     public void StartGame()
     {
-        //GameObject.FindGameObjectWithTag("Background").GetComponent<Animator>().Play("Background");
+        GameObject.FindGameObjectWithTag("Background").GetComponent<Animator>().Play("Background");
         StartCoroutine(LoadLevel());
     }
 
-    private IEnumerator LoadLevel()
-    {        
-        //float fadeTime = GameObject.Find("GameControl").GetComponent<Fading>().BeginFade(1);
-        yield return new WaitForSeconds(2);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Additive);
+    public void LoadMainMenu()
+    {
+        Debug.Log("Launching Main Menu");
+        StartCoroutine(LoadLevel(0));
     }
+
+    private IEnumerator LoadLevel()
+    {   
+        float fadeTime = GameObject.Find("GameControl").GetComponent<Fading>().BeginFade(1);
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
+    }
+
+    private IEnumerator LoadLevel(int level)
+    {
+        UnPause();
+        float fadeTime = GameObject.Find("GameControl").GetComponent<Fading>().BeginFade(1);
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene(level, LoadSceneMode.Single);
+    }
+    
 }

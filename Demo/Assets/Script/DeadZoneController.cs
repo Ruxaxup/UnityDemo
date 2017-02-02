@@ -16,7 +16,7 @@ public class DeadZoneController : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        playerPosition.position = new Vector3(0,0,0);
+        playerPosition.position = GameObject.Find("PlayerSpawner").transform.position;
         timeController.GetComponent<TimeText>().ResetTime();
     }
 
